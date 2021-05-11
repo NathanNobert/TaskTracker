@@ -5,7 +5,7 @@ BEGIN TRY
 
     --drop table TTR_TASKS
     CREATE TABLE TTR_TASKS (
-        TTS_ID int IDENTITY(1,1),
+        TTS_ID int IDENTITY(1,1) PRIMARY KEY,
         TTS_CODE varchar(20),
         TTS_DESC varchar(max),
         TTS_ACTIVE bit
