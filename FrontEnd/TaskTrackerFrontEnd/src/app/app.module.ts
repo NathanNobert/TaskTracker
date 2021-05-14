@@ -12,6 +12,7 @@ import { CacheInterceptor } from './interceptors/cache.interceptor';
 import { NoHttpLoaderInterceptor } from './interceptors/no-http-loader.interceptor';
 import { WinAuthInterceptor } from './interceptors/winauth.interceptor';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { MyComponentComponent } from './my-component/my-component.component';
 
 
 export function initConfig(config: AppConfig) {
@@ -20,7 +21,8 @@ export function initConfig(config: AppConfig) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MyComponentComponent
   ],
   imports: [
     BrowserModule,
