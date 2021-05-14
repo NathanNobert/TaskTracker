@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 
 TaskTrackerApi/local.settings.json
+
+FrontEnd/TaskTrackerFrontEnd/.editorconfig
