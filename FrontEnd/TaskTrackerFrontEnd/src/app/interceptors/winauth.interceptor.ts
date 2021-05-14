@@ -32,7 +32,7 @@ export class WinAuthInterceptor implements HttpInterceptor {
         let headers = request.headers || new HttpHeaders();
         
         request = request.clone({
-            withCredentials: true,
+            withCredentials: false,
             headers: headers
         });
         
