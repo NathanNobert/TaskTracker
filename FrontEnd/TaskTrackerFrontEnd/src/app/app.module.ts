@@ -13,18 +13,31 @@ import { NoHttpLoaderInterceptor } from './interceptors/no-http-loader.intercept
 import { WinAuthInterceptor } from './interceptors/winauth.interceptor';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { MyComponentComponent } from './my-component/my-component.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SystemErrorComponent } from './pages/system-error/system-error.component';
+import { routing } from './app.routing';
+import { Configuration } from 'msal';
+import { MsalAngularConfiguration, MsalModule, MsalService, MSAL_CONFIG, MSAL_CONFIG_ANGULAR } from '@azure/msal-angular';
 
+// checks if the app is running on IE
+export const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 export function initConfig(config: AppConfig) {
   return () => config.load();
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    MyComponentComponent
+    MyComponentComponent,
+    LoginComponent,
+    HomeComponent,
+    SystemErrorComponent
   ],
   imports: [
+    routing,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
