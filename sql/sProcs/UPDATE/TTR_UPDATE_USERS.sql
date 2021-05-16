@@ -30,7 +30,7 @@ RETURNS:
 Change History
 --------------------------------------------------------------------------------
 ==============================================================================*/
-CREATE PROCEDURE CMP_UPDATE_PROCESS
+CREATE PROCEDURE TTR_UPDATE_USERS
 	@p_tus_id					INT  			= NULL,
 	@p_tus_email				VARCHAR(50) 	= NULL,
 	@p_tus_lan_name				VARCHAR(8)		= NULL,
