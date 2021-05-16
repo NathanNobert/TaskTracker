@@ -1,4 +1,8 @@
-import { APP_INITIALIZER, NgModule } from "@angular/core";
+import {
+    APP_INITIALIZER,
+    NgModule,
+    CUSTOM_ELEMENTS_SCHEMA,
+} from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -22,6 +26,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { SystemErrorComponent } from "./pages/system-error/system-error.component";
 import { routing } from "./app.routing";
 import { MaterialModule } from "./material.module";
+import { FormsModule } from "@angular/forms";
 
 // checks if the app is running on IE
 export const isIE =
@@ -51,6 +56,7 @@ export function initConfig(config: AppConfig) {
             serverLogLevel: NgxLoggerLevel.DEBUG,
         }),
         MaterialModule,
+        FormsModule,
     ],
     providers: [
         TestService,
@@ -80,5 +86,6 @@ export function initConfig(config: AppConfig) {
         },
     ],
     bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
