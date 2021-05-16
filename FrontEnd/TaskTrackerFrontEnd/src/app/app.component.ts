@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
+        this.checkPreferences();
         this.testService.getUsers().pipe(
             takeUntil(this.destroy)
         ).subscribe(result => {
@@ -25,7 +26,27 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.destroy.next();
+        this.destroy.next(); 
         this.destroy.unsubscribe();
+    }
+
+    onToggleDarkMode() {
+        let theme = localStorage.getItem('UserTheme');
+        if(!theme || theme === 'light') {
+            theme = 'dark';
+            document.documentElement.classList.add('dark')
+        }
+        else {
+            theme = 'light'
+            document.documentElement.classList.remove('dark')
+        }
+        localStorage.setItem('UserTheme', theme)
+        
+    }
+
+    private checkPreferences() {
+        //load from database the user's preferences 
+        let theme = localStorage.getItem('UserTheme');
+        document.documentElement.classList.add(theme)
     }
 }
