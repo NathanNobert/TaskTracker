@@ -1,21 +1,21 @@
 IF EXISTS (SELECT name FROM sysobjects 
-		WHERE name = 'TTR_INSERT_TASKS' AND type = 'P')
-DROP PROCEDURE TTR_INSERT_TASKS
+		WHERE name = 'TTR_INSERT_TASK' AND type = 'P')
+DROP PROCEDURE TTR_INSERT_TASK
 GO
 
 /*==============================================================================
-TTR_INSERT_TASKS
+TTR_INSERT_TASK
 
 DESCRIPTION: 
-Stored Proc to insert a row into the TTR_USERS table.
+Stored Proc to insert a row into the TTR_TASK table.
 
 DATE CREATED:2021.05.16
 AUTHOR:rforbes
 
 INPUT:
-@p_tts_code     				VARCHAR(20)
-@p_tts_desc		            	VARCHAR(max)
-@p_tts_active  					bit
+@p_tsk_code     				VARCHAR(20)
+@p_tsk_desc		            	VARCHAR(max)
+@p_tsk_active  					bit
 
 OUTPUT:
 @p_retval                           INT
@@ -27,25 +27,25 @@ Change History
 --------------------------------------------------------------------------------
 ==============================================================================*/
 
-CREATE PROCEDURE TTR_INSERT_TASKS
-	@p_tts_code			VARCHAR(20)		    = NULL,
-	@p_tts_desc			VARCHAR(max)		= NULL,
-	@p_tts_active       bit                 = Null,
+CREATE PROCEDURE TTR_INSERT_TASK
+	@p_tsk_code			VARCHAR(20)		    = NULL,
+	@p_tsk_desc			VARCHAR(max)		= NULL,
+	@p_tsk_active       bit                 = Null,
 	@p_retval           INT = 0 OUT
 AS
 DECLARE @l_error INT
 
 BEGIN TRANSACTION
 
-INSERT INTO TTR_TASKS(
-	TTS_CODE,
-	TTS_DESC,
-	TTS_ACTIVE
+INSERT INTO TTR_TASK(
+	TSK_CODE,
+	TSK_DESC,
+	TSK_ACTIVE
 )
 VALUES (
-	@p_tts_code	  ,
-	@p_tts_desc	  ,
-	@p_tts_active			
+	@p_tsk_code	  ,
+	@p_tsk_desc	  ,
+	@p_tsk_active			
 )
 
 SET @l_error = @@ERROR

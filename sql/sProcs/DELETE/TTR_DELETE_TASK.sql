@@ -1,13 +1,13 @@
 IF EXISTS (SELECT name FROM sysobjects 
-		WHERE name = 'TTR_DELETE_TASKS' AND type = 'P')
-DROP PROCEDURE TTR_DELETE_TASKS
+		WHERE name = 'TTR_DELETE_TASK' AND type = 'P')
+DROP PROCEDURE TTR_DELETE_TASK
 GO
 
 /*==============================================================================
-TTR_DELETE_TASKS
+TTR_DELETE_TASK
 
 DESCRIPTION: 
-Stored proc to delete a record from the TTR_TASKS table
+Stored proc to delete a record from the TTR_TASK table
 
 DATE CREATED:2021.05.10
 AUTHOR:rforbes
@@ -22,16 +22,16 @@ Change History
 --------------------------------------------------------------------------------
 
 ==============================================================================*/
-CREATE PROCEDURE TTR_DELETE_TASKS
-	@p_tts_id INT = Null
+CREATE PROCEDURE TTR_DELETE_TASK
+	@p_tsk_id INT = Null
 AS
 
 DECLARE @l_error INT
 
 BEGIN TRANSACTION
 
-DELETE FROM TTR_TASKS
-	WHERE TTS_ID = @p_tts_id
+DELETE FROM TTR_TASK
+	WHERE TSK_ID = @p_tsk_id
 
 SET @l_error = @@ERROR
 IF @l_error != 0 GOTO errorhandler

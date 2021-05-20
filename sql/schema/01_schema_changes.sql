@@ -2,15 +2,15 @@ use TaskTrackerDev
 
 BEGIN TRY
     BEGIN TRANSACTION
-
+    
     --drop table TTR_TASKS
-    CREATE TABLE TTR_TASKS (
-        TTS_ID int IDENTITY(1,1) PRIMARY KEY,
-        TTS_CODE varchar(20),
-        TTS_DESC varchar(max),
-        TTS_ACTIVE bit
+    CREATE TABLE TTR_TASK (
+        TSK_ID int IDENTITY(1,1) PRIMARY KEY,
+        TSK_CODE varchar(20),
+        TSK_DESC varchar(max),
+        TSK_ACTIVE bit
     )
-    insert into TTR_TASKS values ('task1', 'tester task', 1)
+    insert into TTR_TASK values ('task1', 'tester task', 1)
 
 	COMMIT TRANSACTION
 
