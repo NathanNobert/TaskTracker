@@ -1,9 +1,9 @@
 <div class="flex-row">
-    <h1 class="pt-5 text-center">Home Page</h1>
+  <h1 class="pt-5 text-center">Home Page</h1>
 </div>
 
 <div *ngIf="loggedIn">
-    <p>You are logged in</p>
+  <p>You are logged in</p>
 </div>
 
 <simple-text-input
@@ -12,3 +12,5 @@
     label="Hello"
     (textChanged)="myFunction($event)"
 ></simple-text-input>
+
+<app-task></app-task>

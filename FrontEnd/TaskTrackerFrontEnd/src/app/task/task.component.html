@@ -1,0 +1,10 @@
+<div class="container mx-auto bg-red-700 text-center mt-10 flex-col">
+  <button (click)="myfunction()" class="bg-yellow-600 rounded-lg mb-10">
+    Click Me!
+  </button>
+  <input class="w-full rounded-lg" type="text" [(ngModel)]="output" />
+  <p>{{ task }}</p>
+  <div *ngFor="let item of taskinput">
+    <p>{{ item }}</p>
+  </div>
+</div>

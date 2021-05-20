@@ -20,7 +20,7 @@ import { CacheInterceptor } from "./interceptors/cache.interceptor";
 import { NoHttpLoaderInterceptor } from "./interceptors/no-http-loader.interceptor";
 import { WinAuthInterceptor } from "./interceptors/winauth.interceptor";
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
-import { MyComponentComponent } from "./my-component/my-component.component";
+import { TaskComponent } from "./task/task.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { SystemErrorComponent } from "./pages/system-error/system-error.component";
@@ -41,7 +41,7 @@ export function initConfig(config: AppConfig) {
 @NgModule({
     declarations: [
         AppComponent,
-        MyComponentComponent,
+        TaskComponent,
         LoginComponent,
         HomeComponent,
         SystemErrorComponent,
