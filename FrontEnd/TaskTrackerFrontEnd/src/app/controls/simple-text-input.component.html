@@ -1,0 +1,8 @@
+<div class="border-black bg-red-300 my-class">
+    <label>{{ label }}</label>
+    <input type="text" [(ngModel)]="text" placeholder="{{ placeholder }}" />
+    <input type="test" [(ngModel)]="newItem" placeholder="{{ placeholder }}" />
+</div>
+
+<button (click)="sendText()">click to log the input text</button>
+<button (click)="sendText2()">click to log the input text 2</button>

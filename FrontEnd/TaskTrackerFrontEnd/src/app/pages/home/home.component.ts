@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
     selector: "app-home",
@@ -7,7 +7,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
     loggedIn: boolean = false;
+    inputText: string;
     constructor() {}
 
     ngOnInit(): void {}
+
+    myFunction(text) {
+        console.log(text);
+    }
 }

@@ -31,7 +31,7 @@ body {
 }
 
 .btn-base {
-    @apply rounded-lg shadow-md;
+    @apply rounded-lg shadow-md py-2 py-4;
 }
 
 app-root {

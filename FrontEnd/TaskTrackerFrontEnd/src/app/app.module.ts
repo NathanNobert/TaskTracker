@@ -27,6 +27,7 @@ import { SystemErrorComponent } from "./pages/system-error/system-error.componen
 import { routing } from "./app.routing";
 import { MaterialModule } from "./material.module";
 import { FormsModule } from "@angular/forms";
+import { simpleTextInputComponent } from "./controls/simple-text-input.component";
 
 // checks if the app is running on IE
 export const isIE =
@@ -44,6 +45,7 @@ export function initConfig(config: AppConfig) {
         LoginComponent,
         HomeComponent,
         SystemErrorComponent,
+        simpleTextInputComponent,
     ],
     imports: [
         routing,

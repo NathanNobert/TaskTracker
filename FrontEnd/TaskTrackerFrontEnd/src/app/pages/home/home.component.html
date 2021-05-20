@@ -5,3 +5,10 @@
 <div *ngIf="loggedIn">
     <p>You are logged in</p>
 </div>
+
+<simple-text-input
+    [(text)]="inputText"
+    placeholder="this is placeholder text"
+    label="Hello"
+    (textChanged)="myFunction($event)"
+></simple-text-input>
