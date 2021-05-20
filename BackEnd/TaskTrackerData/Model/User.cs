@@ -9,11 +9,11 @@ namespace TaskTrackerData.Model
     {
         #region DB constants
 
-        private const string SqlPkName = "@p_tus_id";
-        private const string SqlSpNameLoad = "TTR_GET_USERS";
-        private const string SqlSpNameInsert = "TTR_INSERT_USERS";
-        private const string SqlSpNameUpdate = "TTR_UPDATE_USERS";
-        private const string SqlSpNameDelete = "TTR_DELETE_USERS";
+        private const string SqlPkName = "@p_usr_id";
+        private const string SqlSpNameLoad = "TTR_GET_USER";
+        private const string SqlSpNameInsert = "TTR_INSERT_USER";
+        private const string SqlSpNameUpdate = "TTR_UPDATE_USER";
+        private const string SqlSpNameDelete = "TTR_DELETE_USER";
         #endregion
 
         #region Constructor
@@ -21,50 +21,50 @@ namespace TaskTrackerData.Model
             : base(applicationContext, SqlPkName, SqlSpNameLoad, SqlSpNameUpdate, SqlSpNameInsert, SqlSpNameDelete)
         { }
 
-        internal User(ApplicationContext applicationContext, int tusId)
+        internal User(ApplicationContext applicationContext, int usrId)
             : this(applicationContext)
         {
-            if (TusId > 0)
-                Load(tusId);
+            if (UsrId > 0)
+                Load(usrId);
         }
         #endregion
 
         #region Unique Properties
-        public int TusId { get; set; }
-        public string TusEmail { get; set; }
-        public string TusLanName { get; set; }
-        public string TusFName { get; set; }
-        public string TusLName { get; set; }
-        public string TusPassword { get; set; }
-        public bool TusAdmin { get; set; }
+        public int UsrId { get; set; }
+        public string UsrEmail { get; set; }
+        public string UsrLanName { get; set; }
+        public string UsrFName { get; set; }
+        public string UsrLName { get; set; }
+        public string UsrPassword { get; set; }
+        public bool UsrAdmin { get; set; }
         #endregion
 
         #region DataObject functions
 
         protected override void Populate(SqlDataReader rdr)
         {
-            TusId = rdr.GetSafeInt("TUS_ID");
-            TusEmail = rdr.GetSafeString("TUS_EMAIL");
-            TusLanName = rdr.GetSafeString("TUS_LAN_NAME");
-            TusFName = rdr.GetSafeString("TUS_FNAME");
-            TusLName = rdr.GetSafeString("TUS_LNAME");
-            TusPassword = rdr.GetSafeString("TUS_PASSWORD");
-            TusAdmin = rdr.GetSafeBool("TUS_ADMIN");
+            UsrId = rdr.GetSafeInt("USR_ID");
+            UsrEmail = rdr.GetSafeString("USR_EMAIL");
+            UsrLanName = rdr.GetSafeString("USR_LAN_NAME");
+            UsrFName = rdr.GetSafeString("USR_FNAME");
+            UsrLName = rdr.GetSafeString("USR_LNAME");
+            UsrPassword = rdr.GetSafeString("USR_PASSWORD");
+            UsrAdmin = rdr.GetSafeBool("USR_ADMIN");
         }
 
         protected override List<SqlParameter> GetUpdateParams()
         {
             var sqlParams = new List<SqlParameter>();
             if (GetPk() > 0)
-                sqlParams.Add(DataProvider.CreateParameter("p_tus_id", TusId));
+                sqlParams.Add(DataProvider.CreateParameter("p_tus_id", UsrId));
 
             sqlParams.AddRange(new SqlParameter[] {
-                DataProvider.CreateParameter("p_tus_email", TusEmail),
-                DataProvider.CreateParameter("p_tus_lan_name", TusLanName),
-                DataProvider.CreateParameter("p_tus_fname", TusFName),
-                DataProvider.CreateParameter("p_tus_lname", TusLName),
-                DataProvider.CreateParameter("p_tus_password", TusPassword),
-                DataProvider.CreateParameter("p_user_id", ApplicationContext.CurrentUserLanId),
+                DataProvider.CreateParameter("p_usr_email", UsrEmail),
+                DataProvider.CreateParameter("p_usr_lan_name", UsrLanName),
+                DataProvider.CreateParameter("p_usr_fname", UsrFName),
+                DataProvider.CreateParameter("p_usr_lname", UsrLName),
+                DataProvider.CreateParameter("p_usr_password", UsrPassword),
+                DataProvider.CreateParameter("p_usr_admin", UsrAdmin),
                 DataProvider.CreateOutIntParameter("@p_retval")
             });
             return sqlParams;
@@ -78,12 +78,12 @@ namespace TaskTrackerData.Model
 
         protected override void SetIdentityValue(int pkId)
         {
-            TusId = pkId;
+            UsrId = pkId;
         }
 
         protected override int GetPk()
         {
-            return TusId;
+            return UsrId;
         }
 
         #endregion

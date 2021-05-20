@@ -12,5 +12,6 @@ namespace TaskTrackerData.Repository
         public CommonRepository(ApplicationContext applicationContext) : base(applicationContext) { }
 
         public UserRepository User { get { return new UserRepository(ApplicationContext); } }
+        public TaskRepository Task { get { return new TaskRepository(ApplicationContext); } }
     }
 }

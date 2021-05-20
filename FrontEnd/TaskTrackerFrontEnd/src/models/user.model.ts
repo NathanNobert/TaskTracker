@@ -1,9 +1,9 @@
 export class User {
-    tusId: number;
-    tusEmail: string;
-    tusLanName: string;
-    tusFName: string;
-    tusLName: string;
-    tusPassword: string;
-    tusAdmin: boolean;
+    usrId: number;
+    usrEmail: string;
+    usrLanName: string;
+    usrFName: string;
+    usrLName: string;
+    usrPassword: string;
+    usrAdmin: boolean;
 }

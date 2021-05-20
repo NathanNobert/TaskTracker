@@ -13,9 +13,9 @@ namespace TaskTrackerData.Repository
             return new User(ApplicationContext);
         }
 
-        public User Get(int bsuId)
+        public User Get(int usrId)
         {
-            return new User(ApplicationContext, bsuId);
+            return new User(ApplicationContext, usrId);
         }
 
         public List<User> GetList()

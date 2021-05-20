@@ -16,11 +16,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.checkPreferences();
-        // this.testService.getUsers().pipe(
-        //     takeUntil(this.destroy)
-        // ).subscribe(result => {
-        //     console.log(result);
-        // })
+        this.testService
+            .getUsers()
+            .pipe(takeUntil(this.destroy))
+            .subscribe((result) => {
+                console.log(result);
+            });
+        this.testService
+            .getTasks()
+            .pipe(takeUntil(this.destroy))
+            .subscribe((result) => {
+                console.log(result);
+            });
     }
 
     ngOnDestroy() {

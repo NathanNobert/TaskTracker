@@ -48,13 +48,12 @@ namespace TaskTrackerApi
         }
 
         [FunctionName("GetTasks")]
-        public static async Task<IActionResult> GetTasks(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetTasks/{taskName}")] HttpRequest req,
-            string taskName,
+        public async Task<IActionResult> GetTasks(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetTasks")] HttpRequest req,
             ILogger log)
         {
 
-            var tasks = taskName;
+            var tasks = await CommonRepository.Task.GetListAsync();
 
             return new OkObjectResult(tasks);
         }
@@ -64,9 +63,7 @@ namespace TaskTrackerApi
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetUsers")] HttpRequest req,
             ILogger log)
         {
-            var user = CommonRepository.User.GetList();
-
-            var users = user;
+            var users = await CommonRepository.User.GetListAsync();
 
             return new OkObjectResult(users);
         }

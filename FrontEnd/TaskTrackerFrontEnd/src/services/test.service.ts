@@ -1,23 +1,22 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { catchError } from 'rxjs/operators';
+import { catchError } from "rxjs/operators";
 
 import { ExceptionHandlerService } from "./exception-handlers.service";
 import { User } from "src/models/user.model";
 import { AppConfig } from "src/app/app.config";
+import { Task } from "src/models/task.model";
 
 @Injectable()
 export class TestService {
-
     constructor(
         private http: HttpClient,
         private errorHandler: ExceptionHandlerService,
         private config: AppConfig
-    ) { }
+    ) {}
 
-    private apiUrl = `${this.config.getConfig('webApiUrl')}`;
-
+    private apiUrl = `${this.config.getConfig("webApiUrl")}`;
 
     /**
      * Retrieve a list of users
@@ -26,8 +25,32 @@ export class TestService {
     getUsers(): Observable<Array<User>> {
         let requestUrl = `${this.apiUrl}/getusers`;
         console.log(requestUrl);
-        return this.http.get<Array<User>>(requestUrl).pipe(
-            catchError(this.errorHandler.httpExceptionHandler<Array<User>>(`getUsers Error (url=${requestUrl}`))
-        );
+        return this.http
+            .get<Array<User>>(requestUrl)
+            .pipe(
+                catchError(
+                    this.errorHandler.httpExceptionHandler<Array<User>>(
+                        `getUsers Error (url=${requestUrl}`
+                    )
+                )
+            );
+    }
+
+    /**
+     * Retrieve a list of tasks
+     * @returns Observable with an Array of Tasks
+     */
+    getTasks(): Observable<Array<Task>> {
+        let requestUrl = `${this.apiUrl}/getTasks`;
+        console.log(requestUrl);
+        return this.http
+            .get<Array<Task>>(requestUrl)
+            .pipe(
+                catchError(
+                    this.errorHandler.httpExceptionHandler<Array<User>>(
+                        `getTasks Error (url=${requestUrl}`
+                    )
+                )
+            );
     }
 }
